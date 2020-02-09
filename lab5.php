@@ -51,82 +51,137 @@
         </div>
     </div>
 
+    <!-- select a tree nav -->
     <div class="container-fluid mt-3">
-        <h3 class="text-white p-3 shadow">Aralia</h3>
-        <div class="row mb-3">
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="card mt-3 mb-3 shadow">
-                    <div class="card-header align-leff">
-                        <a href="https://www.google.com/maps/search/?api=1&query=45.63472,-122.6500">Castor Aralia
-                        </a>
-                    </div>
-                    <img class="card-img-top" src="img/trees/castor_aralia.jpg" alt="Kalopanax pictus">
-                    <div class="card-body">
-                        <p class="card-text"><strong>Common Genus:</strong> Aralia<br>
-                            <strong>Botanical Name:</strong> <em>Kalopanax pictus</em></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="lab5.php">Select a Tree Section</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <h3 class="p-3 shadow">Arborvitae</h3>
-        <div class="row mb-3">
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="card mt-3 mb-3 shadow">
-                    <div class="card-header shadow">
-                        <a href="https://www.google.com/maps/search/?api=1&query=45.63472,-122.65247">American
-                            Arborvitae</a>
-                    </div>
-                    <img class="card-img-top" src="img/trees/evergreen48.jpg" alt="occidentalis">
-                    <div class="card-body">
-                        <p class="card-text"><strong>Common Genus:</strong> Arborvitae<br>
-                            <strong>Botanical Name:</strong> <em>occidentalis</em></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="lab5.php?aralia=yes&arborvitae=no&ash=no">Show Aralia Section Only <span class="sr-only">(current)</span></a>
+        </li>
 
-        <h3 class="p-3 shadow">Ash</h3>
-        <div class="row mb-3">
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="card mt-3 mb-3 shadow">
-                    <div class="card-header shadow">
-                        <a href="https://www.google.com/maps/search/?api=1&query=45.635857,-122.652392">Rose Hill Ash</a>
-                    </div>
-                    <img class="card-img-top" src="img/trees/deciduous33.jpg" alt="americana">
-                    <div class="card-body">
-                        <p class="card-text"><strong>Common Genus:</strong> Ash<br>
-                            <strong>Botanical Name:</strong> <em>americana</em></p>
-                    </div>
-                </div>
-            </div>
+        <li class="nav-item active">
+            <a class="nav-link" href="lab5.php?aralia=no&arborvitae=yes&ash=no">Show Arborvitae Section Only <span class="sr-only">(current)</span></a>
+        </li>
 
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="card mt-3 mb-3 shadow">
-                    <div class="card-header shadow">
-                        <a href="https://www.google.com/maps/search/?api=1&query=45.63591,-122.65031">Raywood Ash</a>
-                    </div>
-                    <img class="card-img-top" src="img/trees/deciduous34.jpg" alt="angustifolia">
-                    <div class="card-body">
-                        <p class="card-text"><strong>Common Genus:</strong> Ash<br>
-                            <strong>Botanical Name:</strong> <em>angustifolia</em></p>
-                    </div>
-                </div>
-            </div>
+        <li class="nav-item active">
+            <a class="nav-link" href="lab5.php?aralia=no&arborvitae=no&ash=yes">Show Ash Section Only <span class="sr-only">(current)</span></a>
+        </li>
+        </ul>
+    </div>
+    </nav>
+    </div>
 
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="card mt-3 mb-3 shadow">
-                    <div class="card-header shadow">
-                        <a href="https://www.google.com/maps/search/?api=1&query=45.635541,-122.649899">Oregon Ash</a>
-                    </div>
-                    <img class="card-img-top" src="img/trees/deciduous35.jpg" alt="latifolia">
-                    <div class="card-body">
-                        <p class="card-text"><strong>Common Genus:</strong> Ash<br>
-                            <strong>Botanical Name:</strong> ∏<em>latifolia</em></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container-fluid mt-3">
+
+    <?php 
+        /*
+        OPTION 1: Allison and I were working on this assignment together and came up with this solution. 
+        */
+
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            // if aralia set, include aralia file
+            if (isset($_GET["aralia"])) {
+                require "inc/aralia.inc.html";
+            }
+            // if arborvitae is set, include arborvitae file
+            if (isset($_GET["arborvitae"])) {
+                require "inc/arborvitae.inc.html";
+            }
+            // if ash is set, include ash file
+            if (isset($_GET["ash"])) {
+                require "inc/ash.inc.html";
+            }
+            // if empty, include all three
+            if (empty($_GET)) {
+                require "inc/aralia.inc.html";
+                require "inc/arborvitae.inc.html";
+                require "inc/ash.html";
+            }
+        }
+
+        /*
+        OPTION 2: I created this one based upon your video. I added a menu/nav before the sections that allows you to go to a specific section by links. This solution can only show one section at a time though.
+
+        UNCOMMENT TO TEST 
+        */
+
+        // if ($_SERVER["REQUEST_METHOD"] == "GET") {
+        //     $flag= false;
+        //     if (isset($_GET["aralia"])) {
+        //         if ($_GET["aralia"] == "yes") {
+        //             $flag = true;
+        //         } else {
+        //             if ($_GET["aralia"] == "no") {
+        //                 $flag = false;
+        //             }
+        //         }
+        //     }
+    
+        //     // to show when no params set
+        //     if (!isset($_GET["aralia"])) {
+        //         $flag = true;
+        //     }
+    
+        //     // include files to show section
+        //     if ($flag == true) {
+        //         require "inc/aralia.inc.html";
+        //     }
+            
+    
+    
+        //     // arborvitae section
+        //     if (isset($_GET["arborvitae"])) {
+        //         if ($_GET["arborvitae"] == "yes") {
+        //             $flag = true;
+        //         } else {
+        //             if ($_GET["arborvitae"] == "no") {
+        //                 $flag = false;
+        //             }
+        //         }
+        //     }
+    
+        //     // to show when no params set
+        //     if (!isset($_GET["arborvitae"])) {
+        //         $flag = true;
+        //     }
+    
+        //     // include files to show section
+        //     if ($flag == true) {
+        //         require "inc/arborvitae.inc.html";
+        //     }
+    
+    
+        //     // ash section
+        //     if (isset($_GET["ash"])) {
+        //         if ($_GET["ash"] == "yes") {
+        //             $flag = true;
+        //         } else {
+        //             if ($_GET["ash"] == "no") {
+        //                 $flag = false;
+        //             }
+        //         }
+        //     }
+    
+        //     // to show when no params set
+        //     if (!isset($_GET["ash"])) {
+        //         $flag = true;
+        //     }
+    
+        //     // include files to show section
+        //     if ($flag == true) {
+        //         require "inc/ash.inc.html";
+        //     }
+        // }
+        
+
+    ?>
+        
 </div>
 
 <!-- jQuery -->
