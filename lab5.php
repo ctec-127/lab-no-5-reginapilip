@@ -51,39 +51,7 @@
         </div>
     </div>
 
-    <!-- select a tree nav -->
-    <div class="container-fluid mt-3">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="lab5.php">Select a Tree Section</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="lab5.php?aralia=yes&arborvitae=no&ash=no">Show Aralia Section Only <span class="sr-only">(current)</span></a>
-        </li>
-
-        <li class="nav-item active">
-            <a class="nav-link" href="lab5.php?aralia=no&arborvitae=yes&ash=no">Show Arborvitae Section Only <span class="sr-only">(current)</span></a>
-        </li>
-
-        <li class="nav-item active">
-            <a class="nav-link" href="lab5.php?aralia=no&arborvitae=no&ash=yes">Show Ash Section Only <span class="sr-only">(current)</span></a>
-        </li>
-        </ul>
-    </div>
-    </nav>
-    </div>
-
-    <div class="container-fluid mt-3">
-
     <?php 
-        /*
-        OPTION 1: Allison and I were working on this assignment together and came up with this solution. 
-        */
-
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             // if aralia set, include aralia file
             if (isset($_GET["aralia"])) {
@@ -104,82 +72,6 @@
                 require "inc/ash.html";
             }
         }
-
-        /*
-        OPTION 2: I created this one based upon your video. I added a menu/nav before the sections that allows you to go to a specific section by links. This solution can only show one section at a time though.
-
-        UNCOMMENT TO TEST 
-        */
-
-        // if ($_SERVER["REQUEST_METHOD"] == "GET") {
-        //     $flag= false;
-        //     if (isset($_GET["aralia"])) {
-        //         if ($_GET["aralia"] == "yes") {
-        //             $flag = true;
-        //         } else {
-        //             if ($_GET["aralia"] == "no") {
-        //                 $flag = false;
-        //             }
-        //         }
-        //     }
-    
-        //     // to show when no params set
-        //     if (!isset($_GET["aralia"])) {
-        //         $flag = true;
-        //     }
-    
-        //     // include files to show section
-        //     if ($flag == true) {
-        //         require "inc/aralia.inc.html";
-        //     }
-            
-    
-    
-        //     // arborvitae section
-        //     if (isset($_GET["arborvitae"])) {
-        //         if ($_GET["arborvitae"] == "yes") {
-        //             $flag = true;
-        //         } else {
-        //             if ($_GET["arborvitae"] == "no") {
-        //                 $flag = false;
-        //             }
-        //         }
-        //     }
-    
-        //     // to show when no params set
-        //     if (!isset($_GET["arborvitae"])) {
-        //         $flag = true;
-        //     }
-    
-        //     // include files to show section
-        //     if ($flag == true) {
-        //         require "inc/arborvitae.inc.html";
-        //     }
-    
-    
-        //     // ash section
-        //     if (isset($_GET["ash"])) {
-        //         if ($_GET["ash"] == "yes") {
-        //             $flag = true;
-        //         } else {
-        //             if ($_GET["ash"] == "no") {
-        //                 $flag = false;
-        //             }
-        //         }
-        //     }
-    
-        //     // to show when no params set
-        //     if (!isset($_GET["ash"])) {
-        //         $flag = true;
-        //     }
-    
-        //     // include files to show section
-        //     if ($flag == true) {
-        //         require "inc/ash.inc.html";
-        //     }
-        // }
-        
-
     ?>
         
 </div>
